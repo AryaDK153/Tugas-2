@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 align="center">Tugas 3 Assignment PBP</h1>
+
+<h3 align="center">Name: </h3>
+<p align="center">{{nama}}</p>
+
+<h3 align="center">Student ID: </h3>
+<p align="center">{{id}}</p>
+
+<h3 align="center">"{{message}}"</h3>
+
+<table bgcolor="black" width=850 height=850 align="center">
+    <tr bgcolor="#00BFFF" height=50>
+        <th width=200>Title</th>
+        <th width=100>Watched</th>
+        <th width=50>Rating</th>
+        <th width=100>Release Date</th>
+        <th width=400>Review</th>
+    </tr>
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for atr in list_atr %}
+        <tr bgcolor="white" align="center" height=80>
+            <th>{{atr.title}}</th>
+            <th>{{atr.watched}}</th>
+            <th>{{atr.rating}}</th>
+            <th>{{atr.release_date}}</th>
+            <th>{{atr.review}}</th>
+        </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock content %}

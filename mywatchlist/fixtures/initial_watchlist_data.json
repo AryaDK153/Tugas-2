@@ -1,0 +1,112 @@
+[
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":1,
+        "fields":{
+            "title":"Soredemo Ayumu wa Yosetekuru",
+            "watched":"Ongoing",
+            "rating": 5,
+            "release_date": "08/07/2022",
+            "review": "Wholesome story with nice opening theme to top it off"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":2,
+        "fields":{
+            "title":"Kimi No Na Wa",
+            "watched":"Completed",
+            "rating": 5,
+            "release_date": "07/12/2016",
+            "review": "Epic scenery and music, wonderful plot, overrated for the right reason"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":3,
+        "fields":{
+            "title":"Cars",
+            "watched":"Completed",
+            "rating": 5,
+            "release_date": "09/06/2006",
+            "review": "Great story, awesome music, overall, well made"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":4,
+        "fields":{
+            "title":"CW: The Flash",
+            "watched":"Ongoing",
+            "rating": 5,
+            "release_date": "07/10/2014",
+            "review": "Impressive, the casts did an amazing job with their characters so far"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":5,
+        "fields":{
+            "title":"Arcane",
+            "watched":"Completed",
+            "rating": 5,
+            "release_date": "06/11/2021",
+            "review": "Amazing graphics, world building, voice acting, sound quality. The characters are alive... well, some of them :)"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":6,
+        "fields":{
+            "title":"Ninjago Masters of Spinjitzu",
+            "watched":"Ongoing",
+            "rating": 4,
+            "release_date": "14/01/2011",
+            "review": "Fun ninja adventures to watch with family, but death is pretty much meaningless"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":7,
+        "fields":{
+            "title":"Haikyuu",
+            "watched":"Ongoing",
+            "rating": 4,
+            "release_date": "06/04/2014",
+            "review": "It is nice to watch and see how the characters develop, but I lost interest, will probably continue watching a lot later"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":8,
+        "fields":{
+            "title":"Avengers: Endgame",
+            "watched":"Completed",
+            "rating": 3,
+            "release_date": "24/04/2019",
+            "review": "Got spoiled, and there's just too much dialog"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":9,
+        "fields":{
+            "title":"Jujutsu Kaisen 0",
+            "watched":"Queued",
+            "rating": 0,
+            "release_date": "16/03/2022",
+            "review": "-"
+        }
+    },
+    {
+        "model":"mywatchlist.attributewatchlist",
+        "pk":10,
+        "fields":{
+            "title":"Top Gear",
+            "watched":"Queued",
+            "rating": 0,
+            "release_date": "20/10/2002",
+            "review": "-"
+        }
+    }
+]
