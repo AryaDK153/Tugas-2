@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h5>Nama: </h5>
+<p>{{user.get_username}}</p>
+<button><a href="{% url 'todolist:new_task' %}">Tambah Task Baru</a></button>
+
+<table bgcolor="black" width=800px>
+        <tr bgcolor="lightblue">
+            <th>Judul</th>
+            <th>Deskripsi</th>
+            <th>Tanggal Pembuatan</th>
+        </tr>
+    {% for task in task_list %}
+        <tr bgcolor="white">
+            <th>{{task.title}}</th>
+            <th>{{task.description}}</th>
+            <th>{{task.date}}</th>
+        </tr>
+    {% endfor %}
+</table>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}

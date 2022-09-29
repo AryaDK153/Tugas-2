@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 align="center">Tugas 4 Assignment PBP</h2>
+<h1 align="center">TODOLIST</h1>
+
+<p align="center">oleh:</p>
+<table align="center" width=300>
+    <tr>
+        <th align="left">Nama</th>
+        <th align="right">{{nama}}</th>
+    </tr>
+    <tr>
+        <th align="left">Student ID</th>
+        <th align="right">{{id}}</th>
+    </tr>
+</table>
+
+<p align="center">
+    <button align="right"><a href="{% url 'todolist:login' %}">Login</a></button>
+    <button align="left"><a href="{% url 'todolist:register' %}">Register</a></button>
+</p>
+
+{% endblock content %}
