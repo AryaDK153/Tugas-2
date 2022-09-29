@@ -1,6 +1,10 @@
 ## Link Herokuapp
 
-[Todolist Lobby](https://fistofadventure.herokuapp.com/todolist)
+[Todolist Lobby](https://gingerharbinger.herokuapp.com/todolist)
+
+akun dummy:
+1. espotong (limaribuan)
+2. dk (yorunikakeru)
 
 ## Kegunaan {% csrf_token %}
 
