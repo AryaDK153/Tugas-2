@@ -2,7 +2,7 @@
 
 {% block content %}
 <h5>Nama: </h5>
-<p>{{user.get_username}}</p>
+<p>{{user}}</p>
 <button><a href="{% url 'todolist:new_task' %}">Tambah Task Baru</a></button>
 
 <table bgcolor="black" width=800px>

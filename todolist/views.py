@@ -80,6 +80,7 @@ def show_task(request):
     task_list = Task.objects.filter(user=request.user.id)
     print(task_list)
     context = {
+        'user': request.user.get_username,
         'task_list': task_list,
         'last_login': request.COOKIES['last_login'],
     }
