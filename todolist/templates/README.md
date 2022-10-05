@@ -28,7 +28,7 @@ h1 {
     background-color: black;
 }
 ```
-akan mengubah apapun dengan tag '<h1>' menjadi memiliki background berwarna hitam
+> akan mengubah apapun dengan tag <h1> menjadi memiliki background berwarna hitam
 
 ### ID
 Didefinisikan dengan menggunakan '#' diikuti dengan nama ID.
@@ -40,7 +40,7 @@ misal:
     height: 100vh;
 }
 ```
-akan membuat tag apapun dengan 'id="bg"' memiliki style tersebut.
+> akan membuat tag apapun dengan 'id="bg"' memiliki style tersebut.
 
 ### Class
 Didefinisikan dengan menggunakan '.' diikuti dengan nama class yang diinginkan.
@@ -52,6 +52,6 @@ misal:
     height: 100vh;
 }
 ```
-akan membuat tag apapun dengan 'class="bg"' memiliki style tersebut.
+> akan membuat tag apapun dengan 'class="bg"' memiliki style tersebut.
 
 ## Implementasi Tugas 5
