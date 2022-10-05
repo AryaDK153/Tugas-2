@@ -26,7 +26,7 @@ def register_user(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Akun telah berhasil dibuat!')
-            return redirect('todolist:lobby')
+            return redirect('todolist:login')
     
     context = {'form':form}
     return render(request, 'register.html', context)
@@ -69,7 +69,8 @@ def new_task(request):
         description = request.POST.get('description')
         Task.objects.create(user = User.objects.get(pk = uid), title=title, description=description)
         form = AddTaskForm()
-
+        messages.success(request, 'Task baru telah berhasil ditambahkan!')
+        
     context = {'form' : form}
     return render(request, 'new_task.html', context)
 

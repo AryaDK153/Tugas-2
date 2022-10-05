@@ -1,25 +1,51 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Welcome!</title>
+{% endblock meta %}
 
 {% block content %}
+{% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> {% endcomment %}
 
-<h2 align="center">Tugas 4 Assignment PBP</h2>
-<h1 align="center">TODOLIST</h1>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'todolist:task' %}">TODOLIST</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    by {{nama}} | NPM {{id}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<p align="center">oleh:</p>
-<table align="center" width=300>
-    <tr>
-        <th align="left">Nama</th>
-        <th align="right">{{nama}}</th>
-    </tr>
-    <tr>
-        <th align="left">Student ID</th>
-        <th align="right">{{id}}</th>
-    </tr>
-</table>
-
-<p align="center">
-    <button align="right"><a href="{% url 'todolist:login' %}">Login</a></button>
-    <button align="left"><a href="{% url 'todolist:register' %}">Register</a></button>
-</p>
-
+<div class="image-fluid text-white" id="bgimg">
+    <body>
+        <style>
+            #bgimg {
+                background-image: url("https://www.athletadesk.com/wp-content/uploads/2016/08/join-background.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100vh;
+            }
+        </style>
+        <div class="container text-center">
+            <div class="container-fluid bg-dark" style="--bs-bg-opacity: .5;">
+                <h3 align="center">Tugas 4 Assignment PBP</h3>
+                <h1 align="center">Welcome to Todolist!</h1>
+            </div>
+            <div class="btn-group">
+                <div class="row justify-content-center">
+                    <a href="{% url 'todolist:login' %}" class="btn btn-primary">Login</a>
+                    <a href="{% url 'todolist:register' %}" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</div>
 {% endblock content %}
