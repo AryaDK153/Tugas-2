@@ -12,7 +12,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'todolist:new_task' %}">New Task</a>
+                  <a class="nav-link inactive" href="{% url 'todolist:task' %}">Task</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">New Task</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -35,36 +38,50 @@
             }
         </style>
         <div class="container text-left">
-            <div class="login bg-dark" style="--bs-bg-opacity: .7;">
-                
+            <div class="login bg-dark" style="--bs-bg-opacity: .4;">
                 <h1 align="center">Tambah Task Baru</h1>  
-
-                    <form method="POST" >  
-                        {% csrf_token %}  
-                        <table>  
-                            {{ form.as_table }}  
-                            <tr>  
-                                <td></td>
-                                <td><input class="btn btn-secondary" type="submit" name="submit"></td>  
-                            </tr>  
-                        </table>  
-                    </form>
-
-                {% if messages %}  
-                    <ul>   
-                        {% for message in messages %}  
-                            <li>{{ message }}</li>  
-                            {% endfor %}  
-                    </ul>   
-                {% endif %}
-            </div>
-
-            <div class="container text-center">
-                <div class="button">
-                    <div class="row justify-content-center">
-                        <a href="{% url 'todolist:task' %}" class="btn btn-primary">Kembali</a>
+                <section class="vh-100">
+                    <div class="container-fluid h-custom p-5">
+                      <div class="row d-flex justify-content-center align-items-center h-100">
+                        <form method="POST">
+                            {% csrf_token %}
+                  
+                            <!-- Username input -->
+                            <div class="form-outline mb-4">
+                              <input type="text" name="title" id="form3Example3" class="form-control form-control-lg"
+                                placeholder="Judul" />
+                              <label class="form-label" for="form3Example3">Judul</label>
+                            </div>
+                  
+                            <!-- Password input -->
+                            <div class="form-outline mb-3">
+                              <input type="text" name="description" id="form3Example4" class="form-control form-control-lg"
+                                placeholder="Deskripsi" />
+                              <label class="form-label" for="form3Example4">Deskripsi</label>
+                            </div>
+                  
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                              <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Submit</button>
+                            </div>
+                        </form>
+                      </div>
                     </div>
-                </div>
+                    <div class="d-flex flex-column flex-md-row text-light text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+                        <div class="button">
+                            <a href="{% url 'todolist:task' %}" class="btn btn-primary">Kembali</a>
+                        </div>
+                        {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                <div class="text-center">
+                                    <li>{{ message }}</li>
+                                </div>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </section>
             </div>
         </div>
     </body>
