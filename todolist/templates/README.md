@@ -28,7 +28,7 @@ h1 {
     background-color: black;
 }
 ```
-> akan mengubah apapun dengan tag <h1> menjadi memiliki background berwarna hitam
+> akan mengubah apapun dengan tag 'h1' menjadi memiliki background berwarna hitam
 
 ### ID
 Didefinisikan dengan menggunakan '#' diikuti dengan nama ID.
