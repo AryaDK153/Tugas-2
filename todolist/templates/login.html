@@ -1,49 +1,79 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-<title>Login</title>
+<title>Login Akun</title>
 {% endblock meta %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'todolist:task' %}">TODOLIST</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    Belum mempunyai akun? <a align="right" class="btn btn-secondary" aria-current="page" href="{% url 'todolist:register' %}">Buat Akun</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="image-fluid text-white" id="bgimg">
+    <body>
+        <style>
+            #bgimg {
+                background-image: url("https://www.athletadesk.com/wp-content/uploads/2016/08/join-background.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100vh;
+            }
+        </style>
+        <div class="container text-left">
+            <div class = "login bg-dark" style="--bs-bg-opacity: .7;">
 
-<div class = "login">
+                <h1>Login</h1>
 
-    <h1>Login</h1>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>Username: </td>
+                            <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                        </tr>
+                                
+                        <tr>
+                            <td>Password: </td>
+                            <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                        </tr>
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+                        <tr>
+                            <td></td>
+                            <td><input class="btn btn-secondary" type="submit" value="Login"></td>
+                        </tr>
+                    </table>
+                </form>
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <div class="text-center">
+                            <li>{{ message }}</li>
+                        </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}     
+            </div>
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
-
+            <div class="container text-center">
+                <div class="button">
+                    <div class="row justify-content-center">
+                        <a href="{% url 'todolist:lobby' %}" class="btn btn-primary">Kembali ke Lobby</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </div>
-
-<p align="center">
-    <button><a href="{% url 'todolist:lobby' %}">Kembali ke Lobby</a></button>
-</p>
-
 {% endblock content %}

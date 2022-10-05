@@ -1,38 +1,68 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-<title>Registrasi Akun</title>
+<title>Registrasi Akun Baru</title>
 {% endblock meta %}
 
 {% block content %}  
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'todolist:task' %}">TODOLIST</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    Sudah mempunyai akun? <a align="right" class="btn btn-secondary" aria-current="page" href="{% url 'todolist:login' %}">Masuk</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="image-fluid text-white" id="bgimg">
+    <body>
+        <style>
+            #bgimg {
+                background-image: url("https://www.athletadesk.com/wp-content/uploads/2016/08/join-background.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100vh;
+            }
+        </style>
+        <div class="container text-left">
+            <div class="login bg-dark" style="--bs-bg-opacity: .7;">
+                
+                <h1 align="center">Register</h1>  
 
-<div class = "login">
-    
-    <h1>Formulir Registrasi</h1>  
+                    <form method="POST" >  
+                        {% csrf_token %}  
+                        <table>  
+                            {{ form.as_table }}  
+                            <tr>  
+                                <td></td>
+                                <td><input class="btn btn-secondary" type="submit" name="submit" value="Daftar"/></td>  
+                            </tr>  
+                        </table>  
+                    </form>
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
+                {% if messages %}  
+                    <ul>   
+                        {% for message in messages %}  
+                            <li>{{ message }}</li>  
+                            {% endfor %}  
+                    </ul>   
+                {% endif %}
+            </div>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
-
-<p align="center">
-    <button><a href="{% url 'todolist:lobby' %}">Kembali ke Lobby</a></button>
-</p>
-
+            <div class="container text-center">
+                <div class="button">
+                    <div class="row justify-content-center">
+                        <a href="{% url 'todolist:lobby' %}" class="btn btn-primary">Kembali ke Lobby</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</div>
 {% endblock content %}
