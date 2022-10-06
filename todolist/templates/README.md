@@ -1,6 +1,6 @@
 # Tugas 5
 
-## Perbedaan Inline, Internal, dan External CSS serta kelebihan masing-masing
+## Perbedaan Inline, Internal, dan External CSS serta kelebihan masing-masing (Reference: https://www.hostinger.com/tutorials/difference-between-inline-external-and-internal-css)
 
 ### Inline
 Style yang diinginkan didefinisikan dalam tag elemen yang diinginkan. Style hanya berlaku dalam tag tersebut.
@@ -19,7 +19,7 @@ Keunggulan: Style yang sudah didefinisikan dapat digunakan di banyak file berbed
 
 
 
-## HTML5 Tags
+## HTML5 Tags (Reference: https://www.w3schools.com/tags/default.asp)
 
 ```
 '!--...--'      | Bagian '...' untuk menulis comment
@@ -60,7 +60,7 @@ Keunggulan: Style yang sudah didefinisikan dapat digunakan di banyak file berbed
 
 
 
-## CSS Selectors
+## CSS Selectors  (Reference: https://www.w3schools.com/css/css_selectors.asp)
 
 ### Tag
 Didefinisikan langsung dengan nama tag milik HTML5 untuk mengubah elemen-elemen dengan tag tersebut.
