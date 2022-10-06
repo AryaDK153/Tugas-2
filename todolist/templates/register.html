@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Registrasi Akun Baru</title>
+{% endblock meta %}
+
+{% block content %}  
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'todolist:task' %}">TODOLIST</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    Sudah mempunyai akun? <a align="right" class="btn btn-secondary" aria-current="page" href="{% url 'todolist:login' %}">Masuk</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="image-fluid text-white" id="bgimg">
+    <body>
+        <style>
+            #bgimg {
+                background-image: url("https://www.athletadesk.com/wp-content/uploads/2016/08/join-background.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100vh;
+            }
+        </style>
+
+        <section class="vh-100">
+            <div class="container-fluid h-custom bg-dark" style="--bs-bg-opacity: .3;">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5 p-5">
+                    <h1 align="center">Register</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+            
+                        <!-- Username input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" name="username" id="form3Example3" class="form-control form-control-lg"
+                                placeholder="Username" />
+                            <label class="form-label" for="form3Example3">Username</label>
+                        </div>
+            
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                            <input type="password" name="password1" id="form3Example4" class="form-control form-control-lg"
+                                placeholder="Password" />
+                            <label class="form-label" for="form3Example4">Password</label>
+                        </div>
+                        <div class="form-outline mb-3">
+                            <input type="password" name="password2" id="form3Example4" class="form-control form-control-lg"
+                                placeholder="Password" />
+                            <label class="form-label" for="form3Example4">Password Confirmation</label>
+                        </div>
+            
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Daftar</button>
+                        </div>
+            
+                    </form>
+                </div>
+                <div class="col-md-9 col-lg-6 col-xl-5 offset-xl-1">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image">
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row text-light text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+                <div class="button">
+                    <a href="{% url 'todolist:lobby' %}" class="btn btn-primary">Kembali ke Lobby</a>
+                </div>
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <div class="text-center">
+                            <li>{{ message }}</li>
+                        </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+          </section>
+    </body>
+</div>
+{% endblock content %}
