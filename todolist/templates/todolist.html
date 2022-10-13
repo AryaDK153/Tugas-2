@@ -17,7 +17,7 @@
                   <a class="nav-link active" href="#">Task</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link inactive" href="{% url 'todolist:new_task' %}">New Task</a>
+                  <a class="nav-link disabled" href="{% url 'todolist:new_task' %}">New Task (disabled untuk tugas ajax)</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -53,9 +53,11 @@
                 font-size:11px
             }
         </style>
-        <div class="container-fluid row justify-content-center p-5">
+        <div id="task_card"></div>
+        {% comment %} <div class="container-fluid row justify-content-center p-5">
             <h1 class="text-center">Task</h1>
             <div class="row row-cols-md-4 col-sm-10 g-4">
+                <div id="task_card"></div>
                 {% for task in task_list %}
                     <div class="col">
                         <div class="card h-100 text-dark">
@@ -69,14 +71,120 @@
                 {% endfor %}
                 <div class="col">
                     <div class="card h-100 text-light bg-dark" style="--bs-bg-opacity: .4;">
-                        <a href="{% url 'todolist:new_task' %}" class="btn h-100 text-light">
+                        <button type="button" class="btn h-100 text-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <p class="p-5" style="font-size:11px">Tambah Task Baru</p>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
             <p class="text-end p-4">Sesi terakhir login: {{ last_login }}</p>
-        </div>
+        </div> {% endcomment %}
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 align="center" class="text-dark">Tambah Task Baru</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="login bg-dark"> 
+                            <section class="vh-100">
+                                <div class="container-fluid h-custom p-5">
+                                  <div class="row d-flex justify-content-center align-items-center h-100">
+                                    <form method="POST" id="form">
+                                        {% csrf_token %}
+                              
+                                        <!-- Username input -->
+                                        <div class="form-outline mb-4">
+                                          <input type="text" name="title" id="form3Example3" class="form-control form-control-lg"
+                                            placeholder="Judul" />
+                                          <label class="form-label" for="form3Example3">Judul</label>
+                                        </div>
+                              
+                                        <!-- Password input -->
+                                        <div class="form-outline mb-3">
+                                          <input type="text" name="description" id="form3Example4" class="form-control form-control-lg"
+                                            placeholder="Deskripsi" />
+                                          <label class="form-label" for="form3Example4">Deskripsi</label>
+                                        </div>
+                              
+                                        <!-- Submit Button -->
+                                        <div class="text-center text-lg-start mt-4 pt-2">
+                                          <button type="submit" class="btn btn-primary btn-lg"
+                                            style="padding-left: 2.5rem; padding-right: 2.5rem;" id="submit_button" data-bs-dismiss="modal">Save Task</button>
+                                        </div> 
+                                    </form>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
     </body>
 </div>
+
+<script>
+    async function getTodolist() {
+      return fetch("{% url 'todolist:json' %}").then((res) => res.json())
+    }
+  
+    async function refreshTodolist() {
+          document.getElementById("task_card").innerHTML = ""
+          const todolist = await getTodolist()
+          let htmlString = `
+          <div class="container-fluid row justify-content-center p-5">
+            <h1 class="text-center">Task</h1>
+            <div class="row row-cols-md-4 col-sm-10 g-4">
+          `
+          todolist.forEach((item) => {
+            htmlString += `
+            <div class="col">
+                <div class="card h-100 text-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.fields.title}</h5>
+                        <p class="card-text">${item.fields.description}</p>
+                        <p class="card-text">${item.fields.date}</p>
+                    </div>
+                </div>
+            </div>` 
+          })
+
+          htmlString += `
+                <div class="col">
+                    <div class="card h-100 text-light bg-dark" style="--bs-bg-opacity: .4;">
+                        <button type="button" class="btn h-100 text-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <p class="p-5" style="font-size:11px">Tambah Task Baru</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <p class="text-end p-4">Sesi terakhir login: {{ last_login }}</p>
+          </div>
+          `
+          
+          document.getElementById("task_card").innerHTML = htmlString
+    }
+  
+    function addTodolist() {
+      fetch("{% url 'todolist:new_instant' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshTodolist)
+      return false
+    }
+  
+    document.getElementById("submit_button").onclick = addTodolist
+    refreshTodolist()
+
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+    myInput.focus()
+    })
+  </script>
 {% endblock content %}

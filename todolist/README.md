@@ -1,6 +1,8 @@
 ## Link Herokuapp
 
-[Tugas 5](templates/README.md)
+[README Tugas 5](templates/README.md)
+
+[README Tugas 6](README-TWO.md)
 
 [Todolist Lobby](https://gingerharbinger.herokuapp.com/todolist)
 

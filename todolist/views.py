@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.core import serializers
 from todolist.models import Task
 from todolist.forms import AddTaskForm
@@ -98,3 +98,21 @@ def show_todolist_lobby(request):
         'id' : '2106702781',
     }
     return render(request, "lobby.html", context)
+
+def todolist_json(request):
+    data = Task.objects.filter(user=request.user.id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def new_task_instant(request):
+    if request.method == "POST":
+        uid = request.user.id
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+
+        if title !="" and description !="":
+            Task.objects.create(user = User.objects.get(pk = uid), title=title, description=description)
+            return HttpResponse(b"CREATED", status=201)
+        else:
+            messages.info(request, 'Judul atau Deskripsi tidak boleh kosong!')
+            return HttpResponseNotFound()
+    return HttpResponseNotFound()
